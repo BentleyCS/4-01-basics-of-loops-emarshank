@@ -69,25 +69,13 @@ def fibonacci(n):
     three = 1
     hold = 0
     an = ""
-    for i in range (n):
+    for i in range(n):
         three = one + two
         hold = two
         two = three
         one = hold
         an = an + " " + str(three)
     return(an)
-
-oddNumbers(7)
-backwards(5)
-randomRepeating()
-randomRange(5)
-reverse("Hello ")
-fizzBuzzContinuous(5)
-collatz(5)
-fibonacci(5)
-
-
-
 
 """
     Print out all odd numbers from 1 to n(inclusive) in a single string seperated by spaces.
