@@ -2,15 +2,21 @@
 import random
 def oddNumbers(n:int) ->str:
     answ = ""
-    for i in range (1, n, 2):
-        answ = answ + " " + str(i)
+    for i in range(0, n, 2):
+        if i == 0:
+            answ = "1"
+        else:
+            answ = answ + " " + str(i+1)
     return answ
 
 def backwards(n)-> int:
     count = n
     ret = ""
     for i in range (n):
-        ret = ret + " " + str(count)
+        if count == 1:
+            ret = ret + "1"
+        else:
+            ret = ret + str(count) + " "
         count -= 1
     return(ret)
 
@@ -43,24 +49,30 @@ def fizzBuzzContinuous(n):
     an = ""
     hold = ""
     for i in range (1, n+1):
-        if n%3 == 0:
-            hold += "fizz"
-        if n%5 == 0:
-            hold += "buzz"
-        if n%5 != 0 and n%3 != 0:
-            hold = n
-        an += hold
+        if i == 1:
+            an = "1"
+        else:
+            if i%3 == 0 and i%5 == 0:
+                hold = "fizzbuzz"
+            elif i%3 == 0:
+                hold = "fizz"
+            elif i%5 == 0:
+                hold = "buzz"
+            elif i%5 != 0 and i%3 != 0:
+                hold = str(i)
+            an = an + " " + hold
     return(an)
 
 def collatz(n):
-    an = ""
-    count = n
-    while count != 0:
-        if count % 2 == 0:
+    an = str(n)
+    hold = n
+    while n != 1:
+        if n%2 == 0:
             an = an + " " + str(int((n/2)))
+            n = int(n/2)
         else:
-            an = an + " " + str(((count*3)+1))
-        count -= 1
+            an = an + " " + str(((n * 3) + 1))
+            n = (n*3)+1
     return(an)
 
 def fibonacci(n):
@@ -75,7 +87,10 @@ def fibonacci(n):
         two = three
         one = hold
         an = an + " " + str(three)
+    print(an)
     return(an)
+
+fibonacci(5)
 
 """
     Print out all odd numbers from 1 to n(inclusive) in a single string seperated by spaces.
@@ -134,5 +149,3 @@ def fibonacci(n):
     :param n:
     :return:
    """
-
-print(fibonacci(300))
